@@ -1,0 +1,14 @@
+{
+    "ChooseLevel": "اختر مستوى اللعبة",
+    "Time": "الوقت",
+    "NextColor": "اللون",
+    "TimeIsUp": "انتهت اللعبة!",
+    "Yay": "رائع،",
+    "YouWereQuick": "كنت سريعًا!",
+    "Score": "النقاط",
+    "BackToMainScreen": "العودة للصفحة الرئيسية",
+    "YouLost": "لقد خسرت!",
+    "TryAgain": "حاول ثانيةً",
+    "YouChoseWrongColor": "لقد اخترت لونًا خاطئًا",
+    "YouChoseNothing": "أنت لم تختر شيئًا."
+}

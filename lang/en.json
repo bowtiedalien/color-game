@@ -1,0 +1,14 @@
+{
+    "ChooseLevel": "Choose Game Level",
+    "Time": "Time",
+    "NextColor": "Next",
+    "TimeIsUp": "Time is up!",
+    "Yay": "Yay,",
+    "YouWereQuick": "You were quick!",
+    "Score": "score",
+    "BackToMainScreen": "Back to Main Screen",
+    "YouLost": "You lost.",
+    "TryAgain": "Try Again?",
+    "YouChoseWrongColor": "You chose the wrong color",
+    "YouChoseNothing": "You did not choose anything."
+}
