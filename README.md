@@ -1,16 +1,22 @@
 # colorgame
 
-A new Flutter project.
+Project 1 in Mobile Programming - CSE0406.
 
-## Getting Started
+## Mockups
 
-This project is a starting point for a Flutter application.
+location: `./designs`
 
-A few resources to get you started if this is your first Flutter project:
+## References:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- [Random Color Generator - see third answer](https://stackoverflow.com/questions/51340588/flutter-how-can-i-make-a-random-color-generator-background/51341167)
+- [Flutter GridView and ListView](https://medium.com/flutterfly-tech/flutter-listview-gridview-ce7177812b1d)
+- [Yellow lines appearing under text = just add Scaffold as parent widget](https://stackoverflow.com/questions/47114639/yellow-lines-under-text-widgets-in-flutter)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### To create apk
+
+- for debug apk
+  `flutter build apk`
+- for release apk
+  `flutter build apk --release`
+- for app bundle
+  `flutter build appbundle`
