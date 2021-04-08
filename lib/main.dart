@@ -7,7 +7,29 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  static void setLocale(BuildContext context, Locale locale) {
+    // _MyHomePageState state =
+    //     context.findAncestorStateOfType<_MyHomePageState>();
+    _MyAppState state2 = context.findAncestorStateOfType<_MyAppState>();
+    // state.setLocale(locale);
+    state2.setLocale(locale);
+  }
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      print('changing locale in appstate');
+      _locale = locale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,8 +38,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
+      locale: _locale,
       supportedLocales: [
-        Locale('en', 'USA'),
+        Locale('en', 'US'),
         Locale('ar', 'EGY'),
       ],
       localizationsDelegates: [

@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
 var rockwellReg35 = TextStyle(
-    fontFamily: 'Rockwell',
+    fontFamily: 'Raleway',
     fontWeight: FontWeight.w200,
     fontSize: 35,
     color: Colors.white);
 
+var ralewaySemiBold35 = TextStyle(
+    fontFamily: 'Raleway',
+    fontWeight: FontWeight.w600,
+    fontSize: 35,
+    color: Colors.white);
+
 var rockwellReg60 = TextStyle(
-    fontFamily: 'Rockwell',
+    fontFamily: 'Raleway',
     fontWeight: FontWeight.w200,
     fontSize: 60,
     color: Colors.grey);
