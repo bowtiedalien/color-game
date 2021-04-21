@@ -4,13 +4,21 @@ import 'classes/language.dart';
 import 'game_over.dart';
 import 'main.dart';
 import 'package:flutter/material.dart';
+import 'models/timer.dart';
 import 'styles.dart';
+import 'package:provider/provider.dart';
 
 var currentScreen;
 
 class StartScreen extends StatefulWidget {
+  //optional variables coming from Game Screen
+  bool timeWasUp = false;
+  int finalScore;
+  //------------------------
+
   StartScreen();
-  StartScreen.customConstructor(screenToShow) {
+  StartScreen.customConstructor(screenToShow,
+      {this.finalScore, this.timeWasUp}) {
     currentScreen = screenToShow;
   }
 
@@ -44,7 +52,10 @@ class _StartScreenState extends State<StartScreen> {
             : currentScreen == 'Game5x5'
                 ? Game(3)
                 : currentScreen == 'Game Over'
-                    ? GameOver()
+                    ? GameOver(
+                        widget.finalScore,
+                        timeIsUp: widget.timeWasUp,
+                      )
                     : Scaffold(
                         extendBodyBehindAppBar: true,
                         drawer: Drawer(
@@ -104,6 +115,16 @@ class _StartScreenState extends State<StartScreen> {
                                       print('clicked');
                                       currentScreen = 'Game3x3';
                                       print(currentScreen);
+
+                                      //reset the counter
+                                      Provider.of<TimerModel>(context,
+                                              listen: false)
+                                          .counter = 60;
+
+                                      //start the timer
+                                      Provider.of<TimerModel>(context,
+                                              listen: false)
+                                          .startTimer();
                                     });
                                   },
                                   child: Container(
@@ -137,6 +158,16 @@ class _StartScreenState extends State<StartScreen> {
                                       print('clicked');
                                       currentScreen = 'Game4x4';
                                       print(currentScreen);
+
+                                      //reset the counter
+                                      Provider.of<TimerModel>(context,
+                                              listen: false)
+                                          .counter = 60;
+
+                                      //start the timer
+                                      Provider.of<TimerModel>(context,
+                                              listen: false)
+                                          .startTimer();
                                     });
                                   },
                                   child: Container(
@@ -164,6 +195,16 @@ class _StartScreenState extends State<StartScreen> {
                                       print('clicked');
                                       currentScreen = 'Game5x5';
                                       print(currentScreen);
+
+                                      //reset the counter
+                                      Provider.of<TimerModel>(context,
+                                              listen: false)
+                                          .counter = 60;
+
+                                      //start the timer
+                                      Provider.of<TimerModel>(context,
+                                              listen: false)
+                                          .startTimer();
                                     });
                                   },
                                   child: Container(

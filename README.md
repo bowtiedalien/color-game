@@ -22,6 +22,13 @@ location: `./designs`
 - [Internationalization, adding the icon and changing the lang, great tutorial](https://www.youtube.com/watch?v=leUDOBak2NA&list=PLyHn8N5MSsgEfPAxCytQDPATDlHwpP5rE&index=4)
 - [How to pause Countdown timer](https://stackoverflow.com/questions/55384326/pause-flutter-countdown-timer)
 - [Timer clock app](https://www.youtube.com/watch?v=4Zbf-PS9Q84)
+- [\*\*\*Play an Audio from Local Asset - was my last solution after a lot of fruitless debugging - worked immediately](https://www.youtube.com/watch?v=apAtBy17TK4)
+- [\*\*\*Shared Preferences in 5 minutes - Very Helpful](https://www.youtube.com/watch?v=uyz0HrGUamc)
+- [Audio Player decided to give up](https://stackoverflow.com/questions/66009675/audio-player-decides-to-give-up-flutter-audio-cache)
+- [Where I got clock ticking mp3](https://www.fesliyanstudios.com/royalty-free-sound-effects-download/clock-ticking-46)
+- [Immediate link to clock ticking sound mp3](https://www.fesliyanstudios.com/play-mp3/2400)
+- [ISO Language Code Table](http://www.lingoes.net/en/translator/langcode.htm)
+- [Emoji of all country flags](https://flagpedia.net/emoji)
 
 #### To create apk
 

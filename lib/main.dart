@@ -1,7 +1,9 @@
+import 'package:colorgame/models/timer.dart';
 import 'package:flutter/material.dart';
 import 'app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'start_screen.dart';
+import 'game_mode.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,11 +11,8 @@ void main() {
 
 class MyApp extends StatefulWidget {
   static void setLocale(BuildContext context, Locale locale) {
-    // _MyHomePageState state =
-    //     context.findAncestorStateOfType<_MyHomePageState>();
-    _MyAppState state2 = context.findAncestorStateOfType<_MyAppState>();
-    // state.setLocale(locale);
-    state2.setLocale(locale);
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    state.setLocale(locale);
   }
 
   @override
@@ -32,35 +31,38 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
-      locale: _locale,
-      supportedLocales: [
-        Locale('en', 'US'),
-        Locale('ar', 'EGY'),
-      ],
-      localizationsDelegates: [
-        //make sure localisation data is loaded at proper time
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations
-            .delegate, //contains global words that are automatically translated (eg: cancel, ok, yes, no, etc)
-        GlobalWidgetsLocalizations
-            .delegate, //changes text direction from rtl or ltr
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
-              supportedLocale.countryCode == locale.countryCode) {
-            return supportedLocale;
+    return ChangeNotifierProvider(
+      create: (context) => TimerModel(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+        ),
+        locale: _locale,
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('ar', 'EGY'),
+        ],
+        localizationsDelegates: [
+          //make sure localisation data is loaded at proper time
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations
+              .delegate, //contains global words that are automatically translated (eg: cancel, ok, yes, no, etc)
+          GlobalWidgetsLocalizations
+              .delegate, //changes text direction from rtl or ltr
+        ],
+        localeResolutionCallback: (locale, supportedLocales) {
+          for (var supportedLocale in supportedLocales) {
+            if (supportedLocale.languageCode == locale.languageCode &&
+                supportedLocale.countryCode == locale.countryCode) {
+              return supportedLocale;
+            }
           }
-        }
-        return supportedLocales.first;
-      },
-      home: MyHomePage(),
+          return supportedLocales.first;
+        },
+        home: MyHomePage(),
+      ),
     );
   }
 }
@@ -77,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //if Scaffold is not used as the topmost widget, I get yellow lines under text
-      body: StartScreen(),
+      body: GameMode(),
     );
   }
 }

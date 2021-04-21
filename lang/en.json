@@ -1,5 +1,8 @@
 {
     "ChooseLevel": "Choose Game Level",
+    "ChooseVersion": "Choose Game Version",
+    "Minimal": "Default",
+    "FullFeatured": "Full-Featured",
     "Time": "Time",
     "NextColor": "Next",
     "TimeIsUp": "Time is up!",

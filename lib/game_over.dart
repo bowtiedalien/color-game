@@ -4,6 +4,9 @@ import 'start_screen.dart';
 import 'styles.dart';
 
 class GameOver extends StatefulWidget {
+  bool timeIsUp = false;
+  int finalScore;
+  GameOver(this.finalScore, {this.timeIsUp});
   @override
   _GameOverState createState() => _GameOverState();
 }
@@ -29,10 +32,18 @@ class _GameOverState extends State<GameOver> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(AppLocalizations.of(context).translate('TimeIsUp'),
-                style: montserratSemiBold35),
+            widget.timeIsUp
+                ? Text(AppLocalizations.of(context).translate('TimeIsUp'),
+                    style: montserratSemiBold35)
+                : null,
             Container(
               height: 20,
+            ),
+            Text(
+              AppLocalizations.of(context).translate('Score') +
+                  ':' +
+                  widget.finalScore.toString(),
+              style: ralewaySemiBold35,
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
