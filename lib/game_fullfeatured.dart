@@ -8,6 +8,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class GameV2 extends StatefulWidget {
   int levelNumber;
   GameV2(level) {
@@ -295,8 +296,8 @@ class _GameV2State extends State<GameV2> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (_) => StartScreen.customConstructor(
-                        'home'))); // go back to home screen
+                    builder: (_) => StartScreen(
+                        currentScreen: 'home'))); // go back to home screen
           },
         )
       ],
@@ -323,8 +324,8 @@ class _GameV2State extends State<GameV2> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (_) => StartScreen.customConstructor(
-                        'home'))); // go back to home screen
+                    builder: (_) => StartScreen(
+                        currentScreen: 'home'))); // go back to home screen
           },
         )
       ],
@@ -335,7 +336,7 @@ class _GameV2State extends State<GameV2> {
   Widget build(BuildContext context) {
     if (volumeIsOn) playMusic();
     return _counter == 0
-        ? StartScreen.customConstructor('Game Over')
+        ? StartScreen(currentScreen: 'Game Over')
         : Scaffold(
             body: Container(
               child: Stack(children: [
@@ -461,9 +462,8 @@ class _GameV2State extends State<GameV2> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) =>
-                                              StartScreen.customConstructor(
-                                                  'home')));
+                                          builder: (_) => StartScreen(
+                                              currentScreen: 'home')));
                                 },
                               ),
                             ],

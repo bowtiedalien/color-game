@@ -1,5 +1,6 @@
 import 'package:colorgame/app_localizations.dart';
 import 'package:colorgame/game.dart';
+import 'package:colorgame/game_fullfeatured.dart';
 import 'classes/language.dart';
 import 'game_over.dart';
 import 'main.dart';
@@ -8,19 +9,15 @@ import 'models/timer.dart';
 import 'styles.dart';
 import 'package:provider/provider.dart';
 
-var currentScreen;
-
+// ignore: must_be_immutable
 class StartScreen extends StatefulWidget {
-  //optional variables coming from Game Screen
+  //optional variables
   bool timeWasUp = false;
   int finalScore;
+  int mode;
+  var currentScreen;
   //------------------------
-
-  StartScreen();
-  StartScreen.customConstructor(screenToShow,
-      {this.finalScore, this.timeWasUp}) {
-    currentScreen = screenToShow;
-  }
+  StartScreen({this.currentScreen, this.finalScore, this.timeWasUp, this.mode});
 
   @override
   _StartScreenState createState() => _StartScreenState();
@@ -43,14 +40,23 @@ class _StartScreenState extends State<StartScreen> {
     MyApp.setLocale(context, _temp);
   }
 
+  var currentScreen;
   @override
   Widget build(BuildContext context) {
+    //init gameScreen type and init currentScreen
+    Widget gameScreen(level) {
+      if (widget.mode == 2) return GameV2(level);
+      return Game(level); //default
+    }
+
+    currentScreen = widget.currentScreen;
+
     return currentScreen == 'Game3x3'
-        ? Game(1)
+        ? gameScreen(1)
         : currentScreen == 'Game4x4'
-            ? Game(2)
+            ? gameScreen(2)
             : currentScreen == 'Game5x5'
-                ? Game(3)
+                ? gameScreen(3)
                 : currentScreen == 'Game Over'
                     ? GameOver(
                         widget.finalScore,

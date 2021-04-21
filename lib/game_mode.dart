@@ -46,7 +46,8 @@ class _GameModeState extends State<GameMode> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => StartScreen.customConstructor('home')));
+                        builder: (_) =>
+                            StartScreen(currentScreen: 'home', mode: 1)));
               },
               child: Container(
                 height: 110,
@@ -85,7 +86,7 @@ class _GameModeState extends State<GameMode> {
                         context,
                         MaterialPageRoute(
                             builder: (_) =>
-                                StartScreen.customConstructor('home')));
+                                StartScreen(currentScreen: 'home', mode: 2)));
                   },
                   child: Padding(
                     padding: EdgeInsets.only(

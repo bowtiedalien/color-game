@@ -112,8 +112,8 @@ class _GameState extends State<Game> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (_) => StartScreen.customConstructor(
-                          'Game Over',
+                    builder: (_) => StartScreen(
+                          currentScreen: 'Game Over',
                           finalScore: finalScore,
                           timeWasUp: false,
                         ))); // go back to home screen
@@ -237,8 +237,8 @@ class _GameState extends State<Game> {
     var counter = Provider.of<TimerModel>(context).counter;
 
     return counter == 0
-        ? StartScreen.customConstructor(
-            'Game Over',
+        ? StartScreen(
+            currentScreen: 'Game Over',
             timeWasUp: true,
           )
         : Scaffold(

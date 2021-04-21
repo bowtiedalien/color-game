@@ -3,6 +3,7 @@ import 'app_localizations.dart';
 import 'start_screen.dart';
 import 'styles.dart';
 
+// ignore: must_be_immutable
 class GameOver extends StatefulWidget {
   bool timeIsUp = false;
   int finalScore;
@@ -57,7 +58,7 @@ class _GameOverState extends State<GameOver> {
                 ),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => StartScreen.customConstructor('')));
+                      builder: (_) => StartScreen(currentScreen: '')));
                 },
                 child: Text(
                   AppLocalizations.of(context).translate('BackToMainScreen'),
