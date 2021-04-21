@@ -40,16 +40,23 @@ class _StartScreenState extends State<StartScreen> {
     MyApp.setLocale(context, _temp);
   }
 
+  Widget gameScreen(level) {
+    if (widget.mode == 2) return GameV2(level);
+    return Game(level); //default
+  }
+
   var currentScreen;
+
+  @override
+  void initState() {
+    super.initState();
+    //initialise currentScreen from widget.currentScreen only at the first redirection to StartScreen
+    currentScreen = widget.currentScreen;
+  }
+
   @override
   Widget build(BuildContext context) {
     //init gameScreen type and init currentScreen
-    Widget gameScreen(level) {
-      if (widget.mode == 2) return GameV2(level);
-      return Game(level); //default
-    }
-
-    currentScreen = widget.currentScreen;
 
     return currentScreen == 'Game3x3'
         ? gameScreen(1)
