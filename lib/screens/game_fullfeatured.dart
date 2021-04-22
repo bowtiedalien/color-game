@@ -49,7 +49,7 @@ class _GameV2State extends State<GameV2> {
 
   Future<void> _incrementScore() async {
     final prefs = await SharedPreferences.getInstance();
-    int lastScore = await (_getScoreFromPrefs() as FutureOr<int>);
+    int lastScore = await (_getScoreFromPrefs() as Future<int>);
     int currentScore = lastScore + 5;
 
     await prefs.setInt('score', currentScore);
@@ -257,7 +257,6 @@ class _GameV2State extends State<GameV2> {
             " : " +
             _score.toString(),
         style: montserratSemiBold35,
-        // style: ralewaySemiBold35),
       ),
       actions: [
         IconButton(

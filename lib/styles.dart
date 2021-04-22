@@ -10,7 +10,7 @@ var ralewaySemiBold35 = TextStyle(
     fontFamily: 'Raleway',
     fontWeight: FontWeight.w600,
     fontSize: 35,
-    color: Colors.white);
+    color: Colors.black);
 
 var rockwellReg30 = TextStyle(
     fontFamily: 'Raleway',

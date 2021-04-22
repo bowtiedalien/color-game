@@ -74,7 +74,6 @@ class _GameState extends State<Game> {
             " : " +
             _score.toString(),
         style: montserratSemiBold35,
-        // style: ralewaySemiBold35),
       ),
       actions: [
         IconButton(
@@ -264,6 +263,7 @@ class _GameState extends State<Game> {
         ? StartScreen(
             currentScreen: 'Game Over',
             timeWasUp: true,
+            finalScore: _score,
           )
         : WillPopScope(
             onWillPop: _onWillPop,

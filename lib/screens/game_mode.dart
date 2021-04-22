@@ -14,6 +14,8 @@ class GameMode extends StatefulWidget {
 class _GameModeState extends State<GameMode> {
   @override
   Widget build(BuildContext context) {
+    Locale currentLocale = Localizations.localeOf(context);
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -47,7 +49,7 @@ class _GameModeState extends State<GameMode> {
                 Navigator.pushNamed(context, startScreenRoute,
                     arguments: StartScreen(
                       currentScreen: 'home',
-                      mode: 2,
+                      mode: 1,
                     ));
               },
               child: Container(
@@ -89,8 +91,12 @@ class _GameModeState extends State<GameMode> {
                         ));
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 2 - 77.5),
+                    padding: currentLocale.languageCode == 'en'
+                        ? EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width / 2 - 77.5)
+                        : EdgeInsets.only(
+                            right:
+                                MediaQuery.of(context).size.width / 2 - 77.5),
                     child: Container(
                       height: 110,
                       width: 155,
@@ -110,8 +116,8 @@ class _GameModeState extends State<GameMode> {
                   ),
                 ),
                 Tooltip(
-                  message:
-                      "This is a more enhanced version with extra features like play/pause and ticking sound. However, it is not stable, and might be buggy.",
+                  message: AppLocalizations.of(context)!
+                      .translate("GameModeTooltipText")!,
                   height: 30,
                   margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                   padding: EdgeInsets.all(10),
