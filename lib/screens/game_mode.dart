@@ -1,8 +1,10 @@
-import 'package:colorgame/start_screen.dart';
-import 'package:colorgame/styles.dart';
+import 'package:colorgame/routes/route_names.dart';
+
+import '../screens/start_screen.dart';
+import '../styles.dart';
 import 'package:flutter/material.dart';
 
-import 'app_localizations.dart';
+import '../app_localizations.dart';
 
 class GameMode extends StatefulWidget {
   @override
@@ -31,7 +33,7 @@ class _GameModeState extends State<GameMode> {
               width: 200,
               alignment: Alignment.center,
               child: Text(
-                AppLocalizations.of(context).translate('ChooseVersion'),
+                AppLocalizations.of(context)!.translate('ChooseVersion')!,
                 style: rockwellReg35,
                 textAlign: TextAlign.center,
               ),
@@ -42,12 +44,11 @@ class _GameModeState extends State<GameMode> {
             GestureDetector(
               behavior: HitTestBehavior.translucent,
               onTap: () {
-                //go to minimal mode (the one the prof wants)
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) =>
-                            StartScreen(currentScreen: 'home', mode: 1)));
+                Navigator.pushNamed(context, startScreenRoute,
+                    arguments: StartScreen(
+                      currentScreen: 'home',
+                      mode: 2,
+                    ));
               },
               child: Container(
                 height: 110,
@@ -65,7 +66,7 @@ class _GameModeState extends State<GameMode> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    AppLocalizations.of(context).translate('Minimal'),
+                    AppLocalizations.of(context)!.translate('Minimal')!,
                     style: rockwellReg30,
                     textAlign: TextAlign.center,
                   ),
@@ -81,12 +82,11 @@ class _GameModeState extends State<GameMode> {
                 GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
-                    //go to full-featured version (the one I added extra stuff to)
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) =>
-                                StartScreen(currentScreen: 'home', mode: 2)));
+                    Navigator.pushNamed(context, startScreenRoute,
+                        arguments: StartScreen(
+                          currentScreen: 'home',
+                          mode: 2,
+                        ));
                   },
                   child: Padding(
                     padding: EdgeInsets.only(
@@ -100,8 +100,8 @@ class _GameModeState extends State<GameMode> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
-                          AppLocalizations.of(context)
-                              .translate('FullFeatured'),
+                          AppLocalizations.of(context)!
+                              .translate('FullFeatured')!,
                           style: rockwellReg30,
                           textAlign: TextAlign.center,
                         ),

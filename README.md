@@ -29,6 +29,10 @@ location: `./designs`
 - [Immediate link to clock ticking sound mp3](https://www.fesliyanstudios.com/play-mp3/2400)
 - [ISO Language Code Table](http://www.lingoes.net/en/translator/langcode.htm)
 - [Emoji of all country flags](https://flagpedia.net/emoji)
+- [docs of `Navigator.pushNamed`](https://api.flutter.dev/flutter/widgets/Navigator/pushNamed.html)
+- [how to pass arguments with `settings.arguments`](https://flutter.dev/docs/cookbook/navigation/navigate-with-arguments) - see the implementation in the last switch-case in `custom_router.dart`
+- [Prevent dialog from closing on outside touch](https://stackoverflow.com/questions/50649006/prevent-dialog-from-closing-on-outside-touch-in-flutter)
+- [override back button in Flutter](https://stackoverflow.com/questions/49356664/how-to-override-the-back-button-in-flutter)
 
 #### To create apk
 

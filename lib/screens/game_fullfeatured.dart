@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:colorgame/app_localizations.dart';
-import 'package:colorgame/start_screen.dart';
+import '../screens/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'styles.dart';
+import '../styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class GameV2 extends StatefulWidget {
-  int levelNumber;
+  int? levelNumber;
   GameV2(level) {
     levelNumber = level;
   }
@@ -21,19 +21,19 @@ class GameV2 extends StatefulWidget {
 
 class _GameV2State extends State<GameV2> {
   int _counter = 60;
-  Timer _timer;
+  Timer? _timer;
   bool volumeIsOn = true;
   AudioPlayer audioPlayer = AudioPlayer();
   AudioPlayerState audioPlayerState = AudioPlayerState.PAUSED;
-  AudioCache audioCache;
+  late AudioCache audioCache;
   String path =
       'tiktok.mp3'; //todo: try changing this to "sounds/tiktok" and removing the assets/tiktok from the file tree and check if it works. Also try vice versa.
   bool _timerPaused = false;
   bool showStartDialogBool = true;
-  Color correctColor;
-  int _score = 0;
+  Color? correctColor;
+  int? _score = 0;
 
-  Future<int> _getScoreFromPrefs() async {
+  Future<int?> _getScoreFromPrefs() async {
     final prefs = await SharedPreferences.getInstance();
     _score = prefs.getInt('score');
     if (_score == null) {
@@ -49,7 +49,7 @@ class _GameV2State extends State<GameV2> {
 
   Future<void> _incrementScore() async {
     final prefs = await SharedPreferences.getInstance();
-    int lastScore = await _getScoreFromPrefs();
+    int lastScore = await (_getScoreFromPrefs() as FutureOr<int>);
     int currentScore = lastScore + 5;
 
     await prefs.setInt('score', currentScore);
@@ -126,7 +126,7 @@ class _GameV2State extends State<GameV2> {
           _counter--;
         } else {
           audioPlayerState = AudioPlayerState.STOPPED;
-          _timer.cancel();
+          _timer!.cancel();
         }
       });
     });
@@ -137,7 +137,7 @@ class _GameV2State extends State<GameV2> {
     print('stopped timer');
     _timerPaused = true;
     audioPlayerState = AudioPlayerState.PAUSED;
-    if (_timer != null) _timer.cancel();
+    if (_timer != null) _timer!.cancel();
   }
 
   onContainerClicked(Color id, BuildContext contex) async {
@@ -246,14 +246,14 @@ class _GameV2State extends State<GameV2> {
     audioPlayer.release();
     audioPlayer.dispose();
     audioCache.clearCache();
-    _timer.cancel();
+    _timer!.cancel();
   }
 
   Widget showWinDialog(context) {
     return AlertDialog(
-      title: Text(AppLocalizations.of(context).translate('Yay')),
+      title: Text(AppLocalizations.of(context)!.translate('Yay')!),
       content: Text(
-        AppLocalizations.of(context).translate('Score') +
+        AppLocalizations.of(context)!.translate('Score')! +
             " : " +
             _score.toString(),
         style: montserratSemiBold35,
@@ -276,9 +276,9 @@ class _GameV2State extends State<GameV2> {
 
   Widget showLoseDialog(context) {
     return AlertDialog(
-      title: Text(AppLocalizations.of(context).translate('YouLost')),
+      title: Text(AppLocalizations.of(context)!.translate('YouLost')!),
       content: Text(
-          AppLocalizations.of(context).translate('Score') +
+          AppLocalizations.of(context)!.translate('Score')! +
               " : " +
               _score.toString(),
           style: montserratSemiBold35),
@@ -307,8 +307,8 @@ class _GameV2State extends State<GameV2> {
 //not used
   Widget showTimeUpDialog(context) {
     return AlertDialog(
-      title: Text(AppLocalizations.of(context).translate('YouLost')),
-      content: Text(AppLocalizations.of(context).translate('TimeIsUp'),
+      title: Text(AppLocalizations.of(context)!.translate('YouLost')!),
+      content: Text(AppLocalizations.of(context)!.translate('TimeIsUp')!,
           style: montserratSemiBold35),
       actions: [
         IconButton(
@@ -396,8 +396,8 @@ class _GameV2State extends State<GameV2> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                      AppLocalizations.of(context)
-                                              .translate('Time') +
+                                      AppLocalizations.of(context)!
+                                              .translate('Time')! +
                                           ':',
                                       style: montserratSemiBold35,
                                     ),
@@ -412,8 +412,8 @@ class _GameV2State extends State<GameV2> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                      AppLocalizations.of(context)
-                                              .translate('NextColor') +
+                                      AppLocalizations.of(context)!
+                                              .translate('NextColor')! +
                                           ':',
                                       style: montserratSemiBold35,
                                     ),

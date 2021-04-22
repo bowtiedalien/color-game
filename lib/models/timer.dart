@@ -3,7 +3,7 @@ import 'dart:async';
 
 class TimerModel extends ChangeNotifier {
   int _counter = 60;
-  Timer _timer;
+  late Timer _timer;
 
   set counter(v) => _counter = v;
   get counter => _counter;

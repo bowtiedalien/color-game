@@ -1,5 +1,8 @@
 {
     "ChooseLevel": "اختر مستوى اللعبة",
+    "ChooseVersion": "اختر وضع اللعبة",
+    "Minimal": "افتراضي",
+    "FullFeatured": "الوضع المحسّن",
     "Time": "الوقت",
     "NextColor": "اللون",
     "TimeIsUp": "انتهت اللعبة!",

@@ -1,0 +1,10 @@
+const String homeRoute = '/';
+const String startScreenRoute = '/startScreen';
+const String gameMode = '/chooseMode';
+const String defaultGameRoute3x3 = '/defaultMode3x3';
+const String defaultGameRoute4x4 = '/defaultMode4x4';
+const String defaultGameRoute5x5 = '/defaultMode5x5';
+const String enhancedGameRoute3x3 = '/enhancedMode3x3';
+const String enhancedGameRoute4x4 = '/enhancedMode4x4';
+const String enhancedGameRoute5x5 = '/enhancedMode5x5';
+const String gameOver = '/gameOver';

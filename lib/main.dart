@@ -1,9 +1,13 @@
 import 'package:colorgame/models/timer.dart';
 import 'package:flutter/material.dart';
-import 'app_localizations.dart';
+import './app_localizations.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'game_mode.dart';
+import './screens/game_mode.dart';
 import 'package:provider/provider.dart';
+
+import 'routes/custom_router.dart';
+import 'routes/route_names.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +15,7 @@ void main() {
 
 class MyApp extends StatefulWidget {
   static void setLocale(BuildContext context, Locale locale) {
-    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>()!;
     state.setLocale(locale);
   }
 
@@ -20,7 +24,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale;
+  Locale? _locale;
 
   void setLocale(Locale locale) {
     setState(() {
@@ -54,14 +58,16 @@ class _MyAppState extends State<MyApp> {
         ],
         localeResolutionCallback: (locale, supportedLocales) {
           for (var supportedLocale in supportedLocales) {
-            if (supportedLocale.languageCode == locale.languageCode &&
+            if (supportedLocale.languageCode == locale!.languageCode &&
                 supportedLocale.countryCode == locale.countryCode) {
               return supportedLocale;
             }
           }
           return supportedLocales.first;
         },
-        home: MyHomePage(),
+        onGenerateRoute: CustomRouter.allRoutes,
+        initialRoute: homeRoute,
+        //home: MyHomePage(),
       ),
     );
   }

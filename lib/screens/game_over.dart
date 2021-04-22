@@ -1,12 +1,12 @@
+import 'package:colorgame/routes/route_names.dart';
 import 'package:flutter/material.dart';
-import 'app_localizations.dart';
-import 'start_screen.dart';
-import 'styles.dart';
+import '../app_localizations.dart';
+import '../styles.dart';
 
 // ignore: must_be_immutable
 class GameOver extends StatefulWidget {
-  bool timeIsUp = false;
-  int finalScore;
+  bool? timeIsUp = false;
+  int? finalScore;
   GameOver(this.finalScore, {this.timeIsUp});
   @override
   _GameOverState createState() => _GameOverState();
@@ -15,6 +15,8 @@ class GameOver extends StatefulWidget {
 class _GameOverState extends State<GameOver> {
   @override
   Widget build(BuildContext context) {
+    int finalScore = widget.finalScore ?? 0;
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -33,18 +35,21 @@ class _GameOverState extends State<GameOver> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            widget.timeIsUp
-                ? Text(AppLocalizations.of(context).translate('TimeIsUp'),
+            widget.timeIsUp!
+                ? Text(AppLocalizations.of(context)!.translate('TimeIsUp')!,
                     style: montserratSemiBold35)
-                : null,
+                : Text(''),
             Container(
               height: 20,
             ),
             Text(
-              AppLocalizations.of(context).translate('Score') +
-                  ':' +
-                  widget.finalScore.toString(),
+              AppLocalizations.of(context)!.translate('Score')! +
+                  ': ' +
+                  finalScore.toString(),
               style: ralewaySemiBold35,
+            ),
+            Container(
+              height: 20,
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -57,11 +62,12 @@ class _GameOverState extends State<GameOver> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => StartScreen(currentScreen: '')));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (_) => StartScreen(currentScreen: '')));
+                  Navigator.pushNamed(context, startScreenRoute);
                 },
                 child: Text(
-                  AppLocalizations.of(context).translate('BackToMainScreen'),
+                  AppLocalizations.of(context)!.translate('BackToMainScreen')!,
                   style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 25,

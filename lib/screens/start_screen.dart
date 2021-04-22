@@ -1,20 +1,20 @@
 import 'package:colorgame/app_localizations.dart';
-import 'package:colorgame/game.dart';
-import 'package:colorgame/game_fullfeatured.dart';
-import 'classes/language.dart';
+import '../screens/game.dart';
+import '../screens/game_fullfeatured.dart';
+import '../classes/language.dart';
 import 'game_over.dart';
-import 'main.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
-import 'models/timer.dart';
-import 'styles.dart';
+import '../models/timer.dart';
+import '../styles.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class StartScreen extends StatefulWidget {
   //optional variables
-  bool timeWasUp = false;
-  int finalScore;
-  int mode;
+  bool? timeWasUp = false;
+  int? finalScore;
+  int? mode;
   var currentScreen;
   //------------------------
   StartScreen({this.currentScreen, this.finalScore, this.timeWasUp, this.mode});
@@ -114,8 +114,8 @@ class _StartScreenState extends State<StartScreen> {
                                   width: 200,
                                   alignment: Alignment.center,
                                   child: Text(
-                                    AppLocalizations.of(context)
-                                        .translate('ChooseLevel'),
+                                    AppLocalizations.of(context)!
+                                        .translate('ChooseLevel')!,
                                     style: rockwellReg35,
                                     textAlign: TextAlign.center,
                                   ),
