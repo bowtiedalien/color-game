@@ -34,7 +34,12 @@ location: `./designs`
 - [Prevent dialog from closing on outside touch](https://stackoverflow.com/questions/50649006/prevent-dialog-from-closing-on-outside-touch-in-flutter)
 - [override back button in Flutter](https://stackoverflow.com/questions/49356664/how-to-override-the-back-button-in-flutter)
 - [get locale of current context](https://stackoverflow.com/questions/50923906/how-to-get-timezone-language-and-county-id-in-flutter-by-the-location-of-device)
--
+- [lovely explanation of `initState` and `build` method (video) - The Net Ninja](https://www.youtube.com/watch?v=pDzQGolJayE)
+- [solution: timer is glitchy issue, first answer](https://stackoverflow.com/questions/49952901/flutter-timer-issue-during-testing)
+- [How to programmatically exit the app, first answer](https://stackoverflow.com/questions/45109557/flutter-how-to-programmatically-exit-the-app)
+- [enable tooltip on tap rather than on pressed, second answer](https://stackoverflow.com/questions/59826172/tooltip-ontap-rather-than-onlongpress-possible)
+- [Great tutorial on Routing (video) - PodCoder](https://www.youtube.com/watch?v=1jhiXTgY-ko)
+- [acceptable explanation of onGenerateRoute and onUnknownRoute (video) - mtechviral](https://www.youtube.com/watch?v=vyXWqOmkxe8)
 
 #### To create apk
 
