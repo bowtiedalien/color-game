@@ -39,6 +39,9 @@ class _GameState extends State<Game> {
 
   @override
   void initState() {
+    Provider.of<TimerModel>(context, listen: false).counter = 60;
+    Provider.of<TimerModel>(context, listen: false).startTimer();
+
     super.initState();
 
     //Step 2: initialise the color grids for the first time
@@ -64,6 +67,12 @@ class _GameState extends State<Game> {
 
     //Step 3: Reset the score
     _resetScore();
+  }
+
+  @override
+  void dispose() {
+    Provider.of<TimerModel>(context, listen: false).stopTimer();
+    super.dispose();
   }
 
   Widget showWinDialog(context) {
@@ -112,11 +121,14 @@ class _GameState extends State<Game> {
               setState(() {
                 _resetScore();
               });
+
               Navigator.pushNamed(context, '/gameOver',
                   arguments: GameOver(
                     finalScore,
                     timeIsUp: false,
+                    gameLevel: widget.levelNumber,
                   ));
+              Provider.of<TimerModel>(context, listen: false).stopTimer();
             },
           )
         ],
@@ -238,16 +250,22 @@ class _GameState extends State<Game> {
     return (await showDialog(
           context: context,
           builder: (context) => new AlertDialog(
-            title: new Text('Exit the Game'),
-            content: new Text('Are you sure you want to exit the game?'),
+            title: new Text(AppLocalizations.of(context)!
+                .translate('ExitGameDialogTitle')!),
+            content: new Text(
+                AppLocalizations.of(context)!.translate('ExitGameDialogText')!),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
-                child: new Text('No'),
+                child: new Text(AppLocalizations.of(context)!.translate('No')!),
               ),
               TextButton(
-                onPressed: () => Navigator.pushNamed(context, homeRoute),
-                child: new Text('Yes'),
+                onPressed: () {
+                  Navigator.pushNamed(context, homeRoute);
+                  Provider.of<TimerModel>(context, listen: false).stopTimer();
+                },
+                child:
+                    new Text(AppLocalizations.of(context)!.translate('Yes')!),
               ),
             ],
           ),
@@ -258,14 +276,21 @@ class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     var counter = Provider.of<TimerModel>(context).counter;
+    int levelNumber = widget.levelNumber;
+
+    Widget goToGameOver(currentScreen, timeWasUp, finalScore, gameLevel) {
+      return StartScreen(
+        currentScreen: currentScreen,
+        timeWasUp: timeWasUp,
+        finalScore: finalScore,
+        gameLevel: gameLevel,
+      );
+    }
 
     return counter == 0
-        ? StartScreen(
-            currentScreen: 'Game Over',
-            timeWasUp: true,
-            finalScore: _score,
-          )
+        ? goToGameOver('Game Over', true, _score, levelNumber)
         : WillPopScope(
+            //this is Game Screen --------
             onWillPop: _onWillPop,
             child: Scaffold(
               body: Container(
@@ -304,7 +329,7 @@ class _GameState extends State<Game> {
                                         Text(
                                           AppLocalizations.of(context)!
                                                   .translate('Time')! +
-                                              ':',
+                                              ': ',
                                           style: montserratSemiBold35,
                                         ),
                                         Consumer<TimerModel>(
@@ -324,7 +349,7 @@ class _GameState extends State<Game> {
                                         Text(
                                           AppLocalizations.of(context)!
                                                   .translate('NextColor')! +
-                                              ':',
+                                              ': ',
                                           style: montserratSemiBold35,
                                         ),
                                         Container(

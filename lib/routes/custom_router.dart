@@ -29,6 +29,7 @@ class CustomRouter {
                     finalScore: startScreenArgs.finalScore,
                     timeWasUp: startScreenArgs.timeWasUp,
                     mode: startScreenArgs.mode,
+                    gameLevel: startScreenArgs.gameLevel,
                   ));
         }
         return MaterialPageRoute(builder: (_) => StartScreen());
@@ -38,6 +39,7 @@ class CustomRouter {
             builder: (_) => GameOver(
                   args.finalScore,
                   timeIsUp: args.timeIsUp,
+                  gameLevel: args.gameLevel,
                 ));
     }
 

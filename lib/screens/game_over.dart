@@ -1,6 +1,4 @@
-import 'package:colorgame/models/timer.dart';
 import 'package:colorgame/routes/route_names.dart';
-import 'package:provider/provider.dart';
 import 'package:colorgame/screens/start_screen.dart';
 import 'package:flutter/material.dart';
 import '../app_localizations.dart';
@@ -20,7 +18,7 @@ class _GameOverState extends State<GameOver> {
   @override
   Widget build(BuildContext context) {
     int finalScore = widget.finalScore ?? 0;
-    int gameLevel = widget.gameLevel ?? 1;
+    int? gameLevel = widget.gameLevel ?? 1;
     String gameLevelString = gameLevel == 1
         ? 'Game3x3'
         : gameLevel == 2
@@ -90,9 +88,6 @@ class _GameOverState extends State<GameOver> {
                 onPressed: () {
                   Navigator.pushNamed(context, startScreenRoute,
                       arguments: StartScreen(currentScreen: gameLevelString));
-
-                  Provider.of<TimerModel>(context, listen: false).counter =
-                      60; //reset counter
                 },
                 child: Text(
                   AppLocalizations.of(context)!.translate('TryAgain')!,

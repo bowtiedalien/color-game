@@ -33,6 +33,8 @@ location: `./designs`
 - [how to pass arguments with `settings.arguments`](https://flutter.dev/docs/cookbook/navigation/navigate-with-arguments) - see the implementation in the last switch-case in `custom_router.dart`
 - [Prevent dialog from closing on outside touch](https://stackoverflow.com/questions/50649006/prevent-dialog-from-closing-on-outside-touch-in-flutter)
 - [override back button in Flutter](https://stackoverflow.com/questions/49356664/how-to-override-the-back-button-in-flutter)
+- [get locale of current context](https://stackoverflow.com/questions/50923906/how-to-get-timezone-language-and-county-id-in-flutter-by-the-location-of-device)
+-
 
 #### To create apk
 

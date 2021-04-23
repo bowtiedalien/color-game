@@ -18,4 +18,9 @@ class TimerModel extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  stopTimer() {
+    _timer.cancel();
+    notifyListeners();
+  }
 }

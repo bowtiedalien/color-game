@@ -3,9 +3,9 @@
     "ChooseVersion": "Choose Game Version",
     "Minimal": "Default",
     "FullFeatured": "Full-Featured",
-    "GameModeTooltipText": "This is a more enhanced version with extra features like play/pause and ticking sound. However, it is not stable, and might be buggy.",
+    "GameModeTooltipText": "Disabled. \nThis is a more enhanced version with extra features like play/pause and ticking sound. However, it is not stable, and might be buggy.",
     "Time": "Time",
-    "NextColor": "Next",
+    "NextColor": "Find",
     "TimeIsUp": "Time is up!",
     "Yay": "Yay,",
     "YouWereQuick": "You were quick!",
@@ -14,5 +14,9 @@
     "YouLost": "You lost.",
     "TryAgain": "Try Again?",
     "YouChoseWrongColor": "You chose the wrong color",
-    "YouChoseNothing": "You did not choose anything."
+    "YouChoseNothing": "You did not choose anything.",
+    "ExitGameDialogTitle": "Exit the Game",
+    "ExitGameDialogText": "Are you sure you want to exit the game?",
+    "Yes": "Yes",
+    "No": "No"
 }

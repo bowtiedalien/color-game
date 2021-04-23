@@ -5,19 +5,23 @@ import '../classes/language.dart';
 import 'game_over.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
-import '../models/timer.dart';
 import '../styles.dart';
-import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class StartScreen extends StatefulWidget {
   //optional variables
-  bool? timeWasUp = false;
-  int? finalScore;
-  int? mode;
+  bool? timeWasUp = false; //taken from Game() and sent to GameOver()
+  int? finalScore; //taken from Game() and sent to GameOver()
+  int? mode; //taken from GameMode() and sent to the rest of the flow
   var currentScreen;
+  int? gameLevel; //taken from Game() and sent to GameOver()
   //------------------------
-  StartScreen({this.currentScreen, this.finalScore, this.timeWasUp, this.mode});
+  StartScreen(
+      {this.currentScreen,
+      this.finalScore,
+      this.timeWasUp,
+      this.mode,
+      this.gameLevel});
 
   @override
   _StartScreenState createState() => _StartScreenState();
@@ -41,7 +45,9 @@ class _StartScreenState extends State<StartScreen> {
   }
 
   Widget gameScreen(level) {
-    if (widget.mode == 2) return GameV2(level);
+    if (widget.mode == 2) {
+      return GameV2(level);
+    }
     return Game(level); //default
   }
 
@@ -128,16 +134,6 @@ class _StartScreenState extends State<StartScreen> {
                                       print('clicked');
                                       currentScreen = 'Game3x3';
                                       print(currentScreen);
-
-                                      //reset the counter
-                                      Provider.of<TimerModel>(context,
-                                              listen: false)
-                                          .counter = 60;
-
-                                      //start the timer
-                                      Provider.of<TimerModel>(context,
-                                              listen: false)
-                                          .startTimer();
                                     });
                                   },
                                   child: Container(
@@ -171,16 +167,6 @@ class _StartScreenState extends State<StartScreen> {
                                       print('clicked');
                                       currentScreen = 'Game4x4';
                                       print(currentScreen);
-
-                                      //reset the counter
-                                      Provider.of<TimerModel>(context,
-                                              listen: false)
-                                          .counter = 60;
-
-                                      //start the timer
-                                      Provider.of<TimerModel>(context,
-                                              listen: false)
-                                          .startTimer();
                                     });
                                   },
                                   child: Container(
@@ -208,16 +194,6 @@ class _StartScreenState extends State<StartScreen> {
                                       print('clicked');
                                       currentScreen = 'Game5x5';
                                       print(currentScreen);
-
-                                      //reset the counter
-                                      Provider.of<TimerModel>(context,
-                                              listen: false)
-                                          .counter = 60;
-
-                                      //start the timer
-                                      Provider.of<TimerModel>(context,
-                                              listen: false)
-                                          .startTimer();
                                     });
                                   },
                                   child: Container(

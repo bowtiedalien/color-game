@@ -14,5 +14,9 @@
     "YouLost": "لقد خسرت!",
     "TryAgain": "حاول ثانيةً",
     "YouChoseWrongColor": "لقد اخترت لونًا خاطئًا",
-    "YouChoseNothing": "أنت لم تختر شيئًا."
+    "YouChoseNothing": "أنت لم تختر شيئًا.",
+    "ExitGameDialogTitle": "مغادرة اللعبة",
+    "ExitGameDialogText": "هل أنت متأكد أنك تريد مغادرة اللعبة؟",
+    "Yes": "نعم",
+    "No": "لا"
 }
