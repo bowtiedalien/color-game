@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:colorgame/app_localizations.dart';
 import '../screens/start_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '../styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,7 +23,7 @@ class _GameV2State extends State<GameV2> {
   Timer? _timer;
   bool volumeIsOn = true;
   AudioPlayer audioPlayer = AudioPlayer();
-  AudioPlayerState audioPlayerState = AudioPlayerState.PAUSED;
+  //AudioPlayerState audioPlayerState = AudioPlayerState.PAUSED;
   late AudioCache audioCache;
   String path =
       'tiktok.mp3'; //todo: try changing this to "sounds/tiktok" and removing the assets/tiktok from the file tree and check if it works. Also try vice versa.
@@ -125,7 +124,7 @@ class _GameV2State extends State<GameV2> {
         if (_counter > 0) {
           _counter--;
         } else {
-          audioPlayerState = AudioPlayerState.STOPPED;
+          //audioPlayerState = AudioPlayerState.STOPPED;
           _timer!.cancel();
         }
       });
@@ -136,7 +135,7 @@ class _GameV2State extends State<GameV2> {
   void stopTimer() {
     print('stopped timer');
     _timerPaused = true;
-    audioPlayerState = AudioPlayerState.PAUSED;
+    //audioPlayerState = AudioPlayerState.PAUSED;
     if (_timer != null) _timer!.cancel();
   }
 
@@ -183,10 +182,10 @@ class _GameV2State extends State<GameV2> {
 
   playMusic() async {
     // print('playing music..');
-    await audioCache.play(path);
+    //await audioCache.play(path);
 
     if (_timerPaused) {
-      audioPlayerState = AudioPlayerState.STOPPED;
+      //audioPlayerState = AudioPlayerState.STOPPED;
     }
   }
 
@@ -199,7 +198,7 @@ class _GameV2State extends State<GameV2> {
   void initState() {
     super.initState();
 
-    audioCache = AudioCache(fixedPlayer: audioPlayer);
+    //audioCache = AudioCache(fixedPlayer: audioPlayer);
     //-- This is causing the tiktok to keep playing even after game is over
     //--- Also, it is causing an error:
     //---- [ERROR:flutter/lib/ui/ui_dart_state.cc(186)] Unhandled Exception: setState() called after dispose(): _GameState#7111f(lifecycle state: defunct, not mounted)
@@ -245,7 +244,7 @@ class _GameV2State extends State<GameV2> {
 
     audioPlayer.release();
     audioPlayer.dispose();
-    audioCache.clearCache();
+    //audioCache.clearCache();
     _timer!.cancel();
   }
 
@@ -457,7 +456,7 @@ class _GameV2State extends State<GameV2> {
                                     _timerPaused =
                                         true; //don't know if this would throw an error
                                   });
-                                  audioPlayerState = AudioPlayerState.STOPPED;
+                                  //audioPlayerState = AudioPlayerState.STOPPED;
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
