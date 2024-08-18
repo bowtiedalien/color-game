@@ -52,8 +52,6 @@ flutter:
   assets:
     - lang/en.json
     - lang/ar.json
-    - assets/sounds/tiktok.mp3
-    - assets/tiktok.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
