@@ -77,9 +77,7 @@ class _GameOverState extends State<GameOver> {
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  elevation: 5,
-                  primary: Color(0xff07A9F4),
-                  onPrimary: Colors.white,
+                  foregroundColor: Colors.white, elevation: 5, backgroundColor: Color(0xff07A9F4),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                     side: BorderSide.none,
@@ -101,9 +99,7 @@ class _GameOverState extends State<GameOver> {
             //Back to Main Screen Button
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  elevation: 5,
-                  primary: Color(0xff2EC261),
-                  onPrimary: Colors.white,
+                  foregroundColor: Colors.white, backgroundColor: Color(0xff2EC261), elevation: 5,
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                     side: BorderSide.none,
