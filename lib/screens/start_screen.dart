@@ -63,6 +63,7 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     //init gameScreen type and init currentScreen
+    var scaffoldKey = GlobalKey<ScaffoldState>();
 
     return currentScreen == 'Game3x3'
         ? gameScreen(1)
@@ -76,6 +77,7 @@ class _StartScreenState extends State<StartScreen> {
                         timeIsUp: widget.timeWasUp,
                       )
                     : Scaffold(
+                      key: scaffoldKey,
                         extendBodyBehindAppBar: true,
                         drawer: Drawer(
                           child: ListView(
@@ -101,6 +103,10 @@ class _StartScreenState extends State<StartScreen> {
                         appBar: AppBar(
                           elevation: 0,
                           backgroundColor: Colors.transparent,
+                          leading: IconButton(
+                            icon: Icon(Icons.language), 
+                            onPressed: () => scaffoldKey.currentState?.openDrawer(),
+                          ),
                         ),
                         body: Container(
                           decoration: BoxDecoration(

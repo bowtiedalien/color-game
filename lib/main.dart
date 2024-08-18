@@ -55,6 +55,7 @@ class _MyAppState extends State<MyApp> {
               .delegate, //contains global words that are automatically translated (eg: cancel, ok, yes, no, etc)
           GlobalWidgetsLocalizations
               .delegate, //changes text direction from rtl or ltr
+          GlobalCupertinoLocalizations.delegate,
         ],
         localeResolutionCallback: (locale, supportedLocales) {
           for (var supportedLocale in supportedLocales) {
