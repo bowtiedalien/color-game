@@ -166,7 +166,7 @@ class _GameModeState extends State<GameMode> {
                       textStyle: TextStyle(fontSize: 15, color: Colors.white),
                       showDuration: Duration(seconds: 30),
                       child: Container(
-                        margin: EdgeInsets.only(right: 20),
+                        margin: EdgeInsets.only(right: 20, left: 20),
                         child:
                             Icon(Icons.help, size: 40, color: Colors.black87),
                       ),

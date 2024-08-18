@@ -29,8 +29,15 @@ var montserratBold35 = TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: 35,
     color: Colors.black);
+
 var montserratSemiBold35 = TextStyle(
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w600,
     fontSize: 35,
+    color: Colors.black);
+
+var montserratSemiBold20 = TextStyle(
+    fontFamily: 'Montserrat',
+    //fontWeight: FontWeight.w600,
+    fontSize: 15,
     color: Colors.black);

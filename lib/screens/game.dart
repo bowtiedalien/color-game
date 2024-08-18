@@ -1,13 +1,12 @@
 import 'dart:math';
-
 import 'package:colorgame/routes/route_names.dart';
 import 'package:colorgame/screens/game_over.dart';
+import 'package:confetti/confetti.dart';
 import '../screens/start_screen.dart';
 import '../styles.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../app_localizations.dart';
-
 import '../models/timer.dart';
 import 'package:provider/provider.dart';
 
@@ -36,6 +35,9 @@ class _GameState extends State<Game> {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('score', 0);
   }
+
+  // confetti
+  final confettiController = ConfettiController(duration: const Duration(seconds:1));
 
   @override
   void initState() {
@@ -72,32 +74,34 @@ class _GameState extends State<Game> {
   @override
   void dispose() {
     Provider.of<TimerModel>(context, listen: false).stopTimer();
+    confettiController.dispose();
     super.dispose();
   }
 
-  Widget showWinDialog(context) {
-    return AlertDialog(
-      title: Text(AppLocalizations.of(context)!.translate('Yay')!),
-      content: Text(
-        AppLocalizations.of(context)!.translate('Score')! +
-            " : " +
-            _score.toString(),
-        style: montserratSemiBold35,
-      ),
-      actions: [
-        IconButton(
-          icon: Icon(
-            Icons.celebration,
-            color: Colors.orange,
-            size: 40,
-          ),
-          onPressed: () {
-            Navigator.of(context, rootNavigator: true).pop('dialog');
-          },
-        )
-      ],
-    );
-  }
+  // Score Popup for Winning - don't want it for now
+  // Widget showWinDialog(context) {
+  //   return AlertDialog(
+  //     title: Text(AppLocalizations.of(context)!.translate('Yay')!),
+  //     content: Text(
+  //       AppLocalizations.of(context)!.translate('Score')! +
+  //           " : " +
+  //           _score.toString(),
+  //       style: montserratSemiBold35,
+  //     ),
+  //     actions: [
+  //       IconButton(
+  //         icon: Icon(
+  //           Icons.celebration,
+  //           color: Colors.orange,
+  //           size: 40,
+  //         ),
+  //         onPressed: () {
+  //           Navigator.of(context, rootNavigator: true).pop('dialog');
+  //         },
+  //       )
+  //     ],
+  //   );
+  // }
 
   Widget showLoseDialog(context) {
     return WillPopScope(
@@ -140,11 +144,12 @@ class _GameState extends State<Game> {
     if (id == correctColor) {
       await _incrementScore();
       _getScoreFromPrefs();
-      print('CORRECT CHOICE');
-      await showDialog(
-        context: contex,
-        builder: (_) => showWinDialog(context),
-      );
+      //print('CORRECT CHOICE');
+        confettiController.play();
+      // await showDialog(
+      //   context: contex,
+      //   builder: (_) => showWinDialog(context),
+      // );
       setState(() {
         randomColors.clear();
 
@@ -180,20 +185,20 @@ class _GameState extends State<Game> {
 
   Widget colorGrid(context, double h, double wid) {
     return SizedBox(
-      height: h,
-      width: wid,
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: GridView.count(
-            crossAxisCount: 3,
-            children: List.generate(9, (index) {
-              return GestureDetector(
-                onTap: () => onContainerClicked(randomColors[index], context),
-                child: Container(
-                  color: randomColors[index],
-                ),
-              );
-            })),
+        height: h,
+        width: wid,
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: GridView.count(
+              crossAxisCount: 3,
+              children: List.generate(9, (index) {
+                return GestureDetector(
+                  onTap: () => onContainerClicked(randomColors[index], context),
+                  child: Container(
+                    color: randomColors[index],
+                  ),
+                );
+              })),
       ),
     );
   }
@@ -296,6 +301,7 @@ class _GameState extends State<Game> {
               body: Container(
                 child: Stack(
                   children: [
+                    // Top Time and Color Card
                     Positioned(
                       top: 0.0,
                       child: Container(
@@ -368,22 +374,36 @@ class _GameState extends State<Game> {
                         ),
                       ),
                     ),
+                    // Confetti Widget
+                    Align(alignment: Alignment.center, child: ConfettiWidget(confettiController: confettiController, 
+                    blastDirectionality: BlastDirectionality.explosive,
+                    numberOfParticles: 20,
+                    gravity: 0.1),),
+                    // Score text widget
+                    Positioned(
+                      top: 170,
+                      left: MediaQuery.of(context).size.width / 2.5,
+                      child: Center(child: Text("Score: ${_score}", 
+                                          style: montserratSemiBold20,),),
+                    ),
+                    //Color Grid Widget
                     Positioned(
                         bottom: 0.0,
                         child: widget.levelNumber == 1
                             ? colorGrid(
                                 context,
-                                MediaQuery.of(context).size.height / 1.8,
+                                MediaQuery.of(context).size.height / 1.95,
                                 MediaQuery.of(context).size.width)
                             : widget.levelNumber == 2
                                 ? colorGrid4x4(
                                     context,
-                                    MediaQuery.of(context).size.height / 1.8,
+                                    MediaQuery.of(context).size.height / 1.95,
                                     MediaQuery.of(context).size.width)
                                 : colorGrid5x5(
                                     context,
-                                    MediaQuery.of(context).size.height / 1.8,
-                                    MediaQuery.of(context).size.width)),
+                                    MediaQuery.of(context).size.height / 1.95,
+                                    MediaQuery.of(context).size.width))
+
                   ],
                 ),
               ),
