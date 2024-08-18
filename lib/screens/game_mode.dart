@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../screens/start_screen.dart';
 import '../styles.dart';
 import 'package:flutter/material.dart';
-
 import '../app_localizations.dart';
 
 class GameMode extends StatefulWidget {
@@ -113,67 +112,67 @@ class _GameModeState extends State<GameMode> {
               Container(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      // Navigator.pushNamed(context, startScreenRoute,
-                      //     arguments: StartScreen(
-                      //       currentScreen: 'home',
-                      //       mode: 2,
-                      //     ));
-                    },
-                    child: Padding(
-                      padding: currentLocale.languageCode == 'en'
-                          ? EdgeInsets.only(
-                              left:
-                                  MediaQuery.of(context).size.width / 2 - 77.5)
-                          : EdgeInsets.only(
-                              right:
-                                  MediaQuery.of(context).size.width / 2 - 77.5),
-                      child: Container(
-                        height: 110,
-                        width: 155,
-                        decoration: BoxDecoration(
-                            color: Color(0xffcccccc),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            AppLocalizations.of(context)!
-                                .translate('FullFeatured')!,
-                            style: rockwellReg30,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      final dynamic _tooltip = _tooltipKey.currentState;
-                      _tooltip.ensureTooltipVisible();
-                    },
-                    child: Tooltip(
-                      key: _tooltipKey,
-                      message: AppLocalizations.of(context)!
-                          .translate("GameModeTooltipText")!,
-                      height: 30,
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      padding: EdgeInsets.all(10),
-                      textStyle: TextStyle(fontSize: 15, color: Colors.white),
-                      showDuration: Duration(seconds: 30),
-                      child: Container(
-                        margin: EdgeInsets.only(right: 20, left: 20),
-                        child:
-                            Icon(Icons.help, size: 40, color: Colors.black87),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     GestureDetector(
+              //       behavior: HitTestBehavior.translucent,
+              //       onTap: () {
+              //         // Navigator.pushNamed(context, startScreenRoute,
+              //         //     arguments: StartScreen(
+              //         //       currentScreen: 'home',
+              //         //       mode: 2,
+              //         //     ));
+              //       },
+              //       child: Padding(
+              //         padding: currentLocale.languageCode == 'en'
+              //             ? EdgeInsets.only(
+              //                 left:
+              //                     MediaQuery.of(context).size.width / 2 - 77.5)
+              //             : EdgeInsets.only(
+              //                 right:
+              //                     MediaQuery.of(context).size.width / 2 - 77.5),
+              //         child: Container(
+              //           height: 110,
+              //           width: 155,
+              //           decoration: BoxDecoration(
+              //               color: Color(0xffcccccc),
+              //               borderRadius: BorderRadius.circular(20)),
+              //           child: Align(
+              //             alignment: Alignment.center,
+              //             child: Text(
+              //               AppLocalizations.of(context)!
+              //                   .translate('FullFeatured')!,
+              //               style: rockwellReg30,
+              //               textAlign: TextAlign.center,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //     GestureDetector(
+              //       onTap: () {
+              //         final dynamic _tooltip = _tooltipKey.currentState;
+              //         _tooltip.ensureTooltipVisible();
+              //       },
+              //       child: Tooltip(
+              //         key: _tooltipKey,
+              //         message: AppLocalizations.of(context)!
+              //             .translate("GameModeTooltipText")!,
+              //         height: 30,
+              //         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              //         padding: EdgeInsets.all(10),
+              //         textStyle: TextStyle(fontSize: 15, color: Colors.white),
+              //         showDuration: Duration(seconds: 30),
+              //         child: Container(
+              //           margin: EdgeInsets.only(right: 20, left: 20),
+              //           child:
+              //               Icon(Icons.help, size: 40, color: Colors.black87),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),
