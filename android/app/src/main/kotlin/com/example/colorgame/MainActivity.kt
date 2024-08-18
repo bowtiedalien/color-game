@@ -1,4 +1,4 @@
-package com.example.colorgame
+package com.qatra.colorgame
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.colorgame">
+    package="com.qatra.colorgame">
    <application
         android:label="colorgame"
         android:icon="@mipmap/ic_launcher">
